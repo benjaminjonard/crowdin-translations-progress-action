@@ -2,7 +2,7 @@
   "name": "action-crowdin-languages-progress",
   "version": "1.0.0",
   "description": "Add languages progress to your README.md",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

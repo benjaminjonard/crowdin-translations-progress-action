@@ -11,6 +11,7 @@ async function run(): Promise<void> {
         let languages = await getLanguagesProgress();
         let markdown = generateMarkdown(languages);
         writeReadme(markdown);
+        core.info('Done !');
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }
@@ -23,13 +24,11 @@ function checkEnvironmentVariables(): void {
     if (!token) {
         throw Error('Missing environment variable: CROWDIN_PERSONAL_TOKEN');
     }
-    core.setSecret(String(process.env.CROWDIN_PERSONAL_TOKEN));
 
     let projectId = process.env.CROWDIN_PROJECT_ID;
     if (!projectId) {
         throw Error('Missing environment variable: CROWDIN_PROJECT_ID');
     }
-    core.setSecret(String(process.env.CROWDIN_PROJECT_ID));
 }
 
 function getLanguagesProgress() {
@@ -106,12 +105,18 @@ function generateTableSection(languages: any[] | void, title: string): string {
 }
 
 function writeReadme(markdown: string): void {
-    let fileContents = fs.readFileSync('README.md').toString();
+    let file: string = core.getInput('file');
+
+    if (!fs.existsSync(file)) {
+        throw Error(`The file ${file} doesn't exists`);
+    }
+
+    let fileContents = fs.readFileSync(file).toString();
 
     markdown = `<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->\n${markdown}\n<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->`
     fileContents = fileContents.replace(/<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->.*<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->/gs, markdown);
 
-    fs.writeFileSync('README.md', fileContents);
+    fs.writeFileSync(file, fileContents);
 }
 
 /*function getFlagEmoji(countryCode: string) {

@@ -15,6 +15,10 @@ inputs:
     description: 'The minimum progress value in % the language must be to be considered available'
     default: '80'
     required: false
+  file:
+    description: 'The markdown file'
+    default: 'README.md'
+    required: false
 
 runs:
   using: 'node16'
