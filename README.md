@@ -55,4 +55,7 @@ jobs:
 
 ## Example
 
-TODO
+![Screenshot 2023-04-14 at 21-58-57 koillection_koillection at test_crowdin-action](https://user-images.githubusercontent.com/20560781/232144086-ec5f30cc-c5d3-4d51-b4b2-45ec6c44dabe.png)
+
+
+
