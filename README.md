@@ -8,7 +8,7 @@ This GitHub action will add a table containing Crowdin languages translation pro
 <!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->
 ```
 
-2. Add a new workflow file `.github/workflows/crowdin-contributors.yml`
+2. Add a new workflow file `.github/workflows/crowdin-languages-progress.yml`
 
 ```yaml
 name: Crowdin languages progress action
