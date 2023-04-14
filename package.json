@@ -1,0 +1,40 @@
+{
+  "name": "action-crowdin-languages-progress",
+  "version": "1.0.0",
+  "description": "Add languages progress to your README.md",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjaminjonard/action-crowdin-languages-progress.git"
+  },
+  "keywords": [
+    "action",
+    "crowdin",
+    "translation"
+  ],
+  "author": {
+    "name": "Benjamin Jonard",
+    "url": "https://github.com/benjaminjonard"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/benjaminjonard/action-crowdin-languages-progress/issues"
+  },
+  "homepage": "https://github.com/benjaminjonard/action-crowdin-languages-progress#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^5.1.1",
+    "@crowdin/crowdin-api-client": "^1.22.1",
+    "axios": "^1.3.5",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/parser": "^5.58.0",
+    "typescript": "^5.0.4"
+  }
+}

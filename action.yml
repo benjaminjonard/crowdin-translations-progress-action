@@ -1,0 +1,25 @@
+name: 'action-crowdin-languages-progress'
+description: 'Add languages progress to your README.md'
+author: 'Benjamin Jonard'
+
+branding:
+  icon: 'type'
+  color: 'red'
+
+inputs:
+  languages_per_row:
+    description: 'Number of languages displayed on each row'
+    default: '2'
+    required: false
+  minimum_completion_percent:
+    description: 'The minimum progress value in % the language must be to be considered available'
+    default: '80'
+    required: false
+
+outputs:
+  languages_progress_table:
+    description: 'Generated table with languages progress'
+
+runs:
+  using: 'node16'
+  main: 'dist/main.js'
