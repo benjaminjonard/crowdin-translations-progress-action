@@ -1,6 +1,7 @@
 import * as core from '@actions/core';
 import * as dotenv from 'dotenv';
 import {TranslationStatus} from '@crowdin/crowdin-api-client';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -8,7 +9,8 @@ async function run(): Promise<void> {
     try {
         checkEnvironmentVariables();
         let languages = await getLanguagesProgress();
-        core.setOutput('languages_progress_table', generateTable(languages));
+        let markdown = generateMarkdown(languages);
+        writeReadme(markdown);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message);
     }
@@ -55,17 +57,14 @@ function getLanguagesProgress() {
     ;
 }
 
-function generateTable(languages: any[] | void): string {
+function generateMarkdown(languages: any[] | void): string {
     core.info('Generate Markdown table...');
 
     let markdown: string = `## Languages`;
 
     let minimumCompletionPercent: number = +core.getInput('minimum_completion_percent');
-    console.log(core.getInput('minimum_completion_percent'));
     markdown += generateTableSection(languages?.filter(language => language.translationProgress >= minimumCompletionPercent), 'Available');
     markdown += generateTableSection(languages?.filter(language => language.translationProgress < minimumCompletionPercent), 'In progress');
-
-    console.log(markdown);
 
     return markdown;
 }
@@ -104,6 +103,15 @@ function generateTableSection(languages: any[] | void, title: string): string {
     });
 
     return markdown;
+}
+
+function writeReadme(markdown: string): void {
+    let fileContents = fs.readFileSync('README.md').toString();
+
+    markdown = `<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->\n${markdown}\n<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->`
+    fileContents = fileContents.replace(/<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->.*<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->/gs, markdown);
+
+    fs.writeFileSync('README.md', fileContents);
 }
 
 /*function getFlagEmoji(countryCode: string) {

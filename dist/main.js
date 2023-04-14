@@ -31,17 +31,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const dotenv = __importStar(require("dotenv"));
 const crowdin_api_client_1 = require("@crowdin/crowdin-api-client");
+const fs_1 = __importDefault(require("fs"));
 dotenv.config();
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             checkEnvironmentVariables();
             let languages = yield getLanguagesProgress();
-            core.setOutput('languages_progress_table', generateTable(languages));
+            let markdown = generateMarkdown(languages);
+            writeReadme(markdown);
         }
         catch (error) {
             if (error instanceof Error)
@@ -80,14 +85,12 @@ function getLanguagesProgress() {
     })
         .catch(error => console.error(error));
 }
-function generateTable(languages) {
+function generateMarkdown(languages) {
     core.info('Generate Markdown table...');
     let markdown = `## Languages`;
     let minimumCompletionPercent = +core.getInput('minimum_completion_percent');
-    console.log(core.getInput('minimum_completion_percent'));
     markdown += generateTableSection(languages === null || languages === void 0 ? void 0 : languages.filter(language => language.translationProgress >= minimumCompletionPercent), 'Available');
     markdown += generateTableSection(languages === null || languages === void 0 ? void 0 : languages.filter(language => language.translationProgress < minimumCompletionPercent), 'In progress');
-    console.log(markdown);
     return markdown;
 }
 function generateTableSection(languages, title) {
@@ -118,6 +121,12 @@ function generateTableSection(languages, title) {
         markdown += `<div align="center" valign="top"><img width="30px" height="30px" src="https://d2gma3rgtloi6d.cloudfront.net/16abbf59/images/flags/small/${language.languageId}.png"></div><div align="center" valign="top">${language.translationProgress}%</div>|`;
     });
     return markdown;
+}
+function writeReadme(markdown) {
+    let fileContents = fs_1.default.readFileSync('README.md').toString();
+    markdown = `<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->\n${markdown}\n<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->`;
+    fileContents = fileContents.replace(/<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->.*<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->/gs, markdown);
+    fs_1.default.writeFileSync('README.md', fileContents);
 }
 /*function getFlagEmoji(countryCode: string) {
     const codePoints = countryCode

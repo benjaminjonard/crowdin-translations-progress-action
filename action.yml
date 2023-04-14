@@ -16,10 +16,6 @@ inputs:
     default: '80'
     required: false
 
-outputs:
-  languages_progress_table:
-    description: 'Generated table with languages progress'
-
 runs:
   using: 'node16'
   main: 'dist/main.js'
