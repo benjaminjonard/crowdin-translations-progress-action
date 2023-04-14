@@ -59,8 +59,7 @@ function getLanguagesProgress() {
 function generateMarkdown(languages: any[] | void): string {
     core.info('Generate Markdown table...');
 
-    let markdown: string = `## Languages`;
-
+    let markdown: string = ``;
     let minimumCompletionPercent: number = +core.getInput('minimum_completion_percent');
     markdown += generateTableSection(languages?.filter(language => language.translationProgress >= minimumCompletionPercent), 'Available');
     markdown += generateTableSection(languages?.filter(language => language.translationProgress < minimumCompletionPercent), 'In progress');
@@ -113,8 +112,8 @@ function writeReadme(markdown: string): void {
 
     let fileContents = fs.readFileSync(file).toString();
 
-    markdown = `<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->\n${markdown}\n<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->`
-    fileContents = fileContents.replace(/<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-START -->.*<!-- ACTION-CROWDIN-LANGUAGES-PROGRESS-END -->/gs, markdown);
+    markdown = `<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-START -->\n${markdown}\n<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->`
+    fileContents = fileContents.replace(/<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-START -->.*<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->/gs, markdown);
 
     fs.writeFileSync(file, fileContents);
 }
