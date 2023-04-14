@@ -79,26 +79,22 @@ function generateTableSection(languages: any[] | void, title: string): string {
     let markdown: string = '\n\n';
     markdown += `#### ${title}`;
     markdown += '\n\n';
-    markdown += `|`;
-    for (let i = 0; i < languagesPerRow; i++) {
-        markdown += ` |`;
-    }
-
-    markdown += '\n';
-    markdown += `|`;
-    for (let i = 0; i < languagesPerRow; i++) {
-        markdown += `-------------------------|`;
-    }
+    markdown += `<table>`;
 
     languages.forEach(function (language, index: number) {
         const currentIndex: number = index + 1;
         if (currentIndex % languagesPerRow == 1 || currentIndex == 1) {
-            markdown += '\n';
-            markdown += '|';
+            markdown += '<tr>';
         }
 
-        markdown += `<div align="center" valign="top"><img width="30px" height="30px" src="https://d2gma3rgtloi6d.cloudfront.net/16abbf59/images/flags/small/${language.languageId}.png"></div><div align="center" valign="top">${language.translationProgress}%</div>|`;
+        markdown += `<td align="center" valign="top"><img width="30px" height="30px" src="https://d2gma3rgtloi6d.cloudfront.net/16abbf59/images/flags/small/${language.languageId}.png"></div><div align="center" valign="top">${language.translationProgress}%</td>`;
+
+        if (currentIndex % languagesPerRow == 0) {
+            markdown += '</tr>';
+        }
     });
+
+    markdown += `</table>`;
 
     return markdown;
 }
