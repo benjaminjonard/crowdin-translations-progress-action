@@ -1,4 +1,4 @@
-name: 'action-crowdin-languages-progress'
+name: 'Crowdin languages progress'
 description: 'Add languages progress to your README.md'
 author: 'Benjamin Jonard'
 
