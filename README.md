@@ -40,7 +40,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           title: New Crowdin languages progress
-          body: New Crowdin languages progress by [Crowdin languages process action](https://github.com/benjaminjonard/crowdin-languages-progress-action) GitHub action
+          body: New Crowdin languages progress by [Crowdin languages progress](https://github.com/benjaminjonard/crowdin-languages-progress-action) GitHub action
           commit-message: New Crowdin languages progress
           branch: crowdin-languages-progress/patch
 ```
@@ -55,4 +55,7 @@ jobs:
 
 ## Example
 
-TODO
+![Screenshot 2023-04-14 at 21-58-57 koillection_koillection at test_crowdin-action](https://user-images.githubusercontent.com/20560781/232144086-ec5f30cc-c5d3-4d51-b4b2-45ec6c44dabe.png)
+
+
+
