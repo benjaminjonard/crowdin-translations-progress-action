@@ -3,8 +3,8 @@ description: 'Add languages progress to your README.md'
 author: 'Benjamin Jonard'
 
 branding:
-  icon: 'type'
-  color: 'red'
+  icon: 'globe'
+  color: 'purple'
 
 inputs:
   languages_per_row:
