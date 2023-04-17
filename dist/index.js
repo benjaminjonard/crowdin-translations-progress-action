@@ -74,7 +74,7 @@ function checkEnvironmentVariables() {
     }
 }
 function getLanguagesProgress() {
-    core.info('Retrieving languages progress from Crowdin...');
+    core.info('Retrieving translations progress from Crowdin...');
     const translationStatusApi = new crowdin_api_client_1.TranslationStatus({
         token: String(process.env.CROWDIN_PERSONAL_TOKEN)
     });
@@ -130,8 +130,8 @@ function writeReadme(markdown) {
     }
     core.info(`Writing to file ${file} with content ${markdown}`);
     let fileContents = fs_1.default.readFileSync(file).toString();
-    markdown = `<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-START -->\n${markdown}\n<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->`;
-    fileContents = fileContents.replace(/<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-START -->.*<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->/gs, markdown);
+    markdown = `<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-START -->\n${markdown}\n<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-END -->`;
+    fileContents = fileContents.replace(/<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-START -->.*<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-END -->/gs, markdown);
     fs_1.default.writeFileSync(file, fileContents);
 }
 /*function getFlagEmoji(countryCode: string) {
@@ -14860,7 +14860,7 @@ module.exports = axios;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["dotenv@16.0.3","/home/benjamin/www/crowdin-languages-progress-action"]],"_from":"dotenv@16.0.3","_id":"dotenv@16.0.3","_inBundle":false,"_integrity":"sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==","_location":"/dotenv","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"dotenv@16.0.3","name":"dotenv","escapedName":"dotenv","rawSpec":"16.0.3","saveSpec":null,"fetchSpec":"16.0.3"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz","_spec":"16.0.3","_where":"/home/benjamin/www/crowdin-languages-progress-action","bugs":{"url":"https://github.com/motdotla/dotenv/issues"},"description":"Loads environment variables from .env file","devDependencies":{"@types/node":"^17.0.9","decache":"^4.6.1","dtslint":"^3.7.0","sinon":"^12.0.1","standard":"^16.0.4","standard-markdown":"^7.1.0","standard-version":"^9.3.2","tap":"^15.1.6","tar":"^6.1.11","typescript":"^4.5.4"},"engines":{"node":">=12"},"exports":{".":{"require":"./lib/main.js","types":"./lib/main.d.ts","default":"./lib/main.js"},"./config":"./config.js","./config.js":"./config.js","./lib/env-options":"./lib/env-options.js","./lib/env-options.js":"./lib/env-options.js","./lib/cli-options":"./lib/cli-options.js","./lib/cli-options.js":"./lib/cli-options.js","./package.json":"./package.json"},"homepage":"https://github.com/motdotla/dotenv#readme","keywords":["dotenv","env",".env","environment","variables","config","settings"],"license":"BSD-2-Clause","main":"lib/main.js","name":"dotenv","repository":{"type":"git","url":"git://github.com/motdotla/dotenv.git"},"scripts":{"dts-check":"tsc --project tests/types/tsconfig.json","lint":"standard","lint-readme":"standard-markdown","prerelease":"npm test","pretest":"npm run lint && npm run dts-check","release":"standard-version","test":"tap tests/*.js --100 -Rspec"},"types":"lib/main.d.ts","version":"16.0.3"}');
+module.exports = JSON.parse('{"_args":[["dotenv@16.0.3","/home/benjamin/www/crowdin-translations-progress-action"]],"_from":"dotenv@16.0.3","_id":"dotenv@16.0.3","_inBundle":false,"_integrity":"sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==","_location":"/dotenv","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"dotenv@16.0.3","name":"dotenv","escapedName":"dotenv","rawSpec":"16.0.3","saveSpec":null,"fetchSpec":"16.0.3"},"_requiredBy":["/"],"_resolved":"https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz","_spec":"16.0.3","_where":"/home/benjamin/www/crowdin-translations-progress-action","bugs":{"url":"https://github.com/motdotla/dotenv/issues"},"description":"Loads environment variables from .env file","devDependencies":{"@types/node":"^17.0.9","decache":"^4.6.1","dtslint":"^3.7.0","sinon":"^12.0.1","standard":"^16.0.4","standard-markdown":"^7.1.0","standard-version":"^9.3.2","tap":"^15.1.6","tar":"^6.1.11","typescript":"^4.5.4"},"engines":{"node":">=12"},"exports":{".":{"require":"./lib/main.js","types":"./lib/main.d.ts","default":"./lib/main.js"},"./config":"./config.js","./config.js":"./config.js","./lib/env-options":"./lib/env-options.js","./lib/env-options.js":"./lib/env-options.js","./lib/cli-options":"./lib/cli-options.js","./lib/cli-options.js":"./lib/cli-options.js","./package.json":"./package.json"},"homepage":"https://github.com/motdotla/dotenv#readme","keywords":["dotenv","env",".env","environment","variables","config","settings"],"license":"BSD-2-Clause","main":"lib/main.js","name":"dotenv","repository":{"type":"git","url":"git://github.com/motdotla/dotenv.git"},"scripts":{"dts-check":"tsc --project tests/types/tsconfig.json","lint":"standard","lint-readme":"standard-markdown","prerelease":"npm test","pretest":"npm run lint && npm run dts-check","release":"standard-version","test":"tap tests/*.js --100 -Rspec"},"types":"lib/main.d.ts","version":"16.0.3"}');
 
 /***/ }),
 

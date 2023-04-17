@@ -32,7 +32,7 @@ function checkEnvironmentVariables(): void {
 }
 
 function getLanguagesProgress() {
-    core.info('Retrieving languages progress from Crowdin...');
+    core.info('Retrieving translations progress from Crowdin...');
 
     const translationStatusApi = new TranslationStatus({
         token: String(process.env.CROWDIN_PERSONAL_TOKEN)
@@ -110,8 +110,8 @@ function writeReadme(markdown: string): void {
 
     let fileContents = fs.readFileSync(file).toString();
 
-    markdown = `<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-START -->\n${markdown}\n<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->`
-    fileContents = fileContents.replace(/<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-START -->.*<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->/gs, markdown);
+    markdown = `<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-START -->\n${markdown}\n<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-END -->`
+    fileContents = fileContents.replace(/<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-START -->.*<!-- CROWDIN-TRANSLATIONS-PROGRESS-ACTION-END -->/gs, markdown);
 
     fs.writeFileSync(file, fileContents);
 }
