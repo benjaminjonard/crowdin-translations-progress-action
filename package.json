@@ -22,10 +22,6 @@
     "url": "https://github.com/benjaminjonard"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/benjaminjonard/action-crowdin-languages-progress/issues"
-  },
-  "homepage": "https://github.com/benjaminjonard/action-crowdin-languages-progress#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
