@@ -37,7 +37,7 @@ jobs:
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           title: New Crowdin languages progress
           body: New Crowdin languages progress by [Crowdin languages progress](https://github.com/benjaminjonard/crowdin-languages-progress-action) GitHub action
@@ -51,7 +51,7 @@ jobs:
 |------------------------------|---------------|---------------------------------------------------------------------------------|
 | `languages_per_row`          | 10            | Number of languages displayed on each row                                       |
 | `minimum_completion_percent` | 80            | The minimum progress value in % the language must be to be considered available |
-| `file`                       | README.md     | The markdown file                                                               |
+| `file`                       | README.md     | The targeted markdown file                                                      |
 
 ## Example
 

@@ -106,6 +106,8 @@ function writeReadme(markdown: string): void {
         throw Error(`The file ${file} doesn't exists`);
     }
 
+    core.info(`Writing to file ${file} with content ${markdown}`);
+
     let fileContents = fs.readFileSync(file).toString();
 
     markdown = `<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-START -->\n${markdown}\n<!-- CROWDIN-LANGUAGES-PROGRESS-ACTION-END -->`

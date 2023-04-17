@@ -4,7 +4,9 @@
   "description": "Add languages progress to your README.md",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node_modules/typescript/bin/tsc && node_modules/@vercel/ncc/dist/ncc/cli.js build --source-map",
+    "start": "node_modules/typescript/bin/tsc && node_modules/@vercel/ncc/dist/ncc/cli.js build --source-map && node dist/index.js"
   },
   "repository": {
     "type": "git",
