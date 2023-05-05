@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.5] / 2023-05-05
+### Miscellaneous
+- Add flags to repository (benjaminjonard)
+
 ## [1.0.4] / 2023-04-17
 ### Miscellaneous
 - Rename project to crowdin-translations-progress-action (benjaminjonard)

@@ -1,6 +1,6 @@
 {
   "name": "action-crowdin-translations-progress",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Add translations progress to your README.md",
   "main": "dist/index.js",
   "scripts": {
