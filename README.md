@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Generate Crowdin translations progress markdown
-        uses: benjaminjonard/crowdin-translations-progress-action@1.0.6
+        uses: benjaminjonard/crowdin-translations-progress-action@1.0.7
         with:
           languages_per_row: 10
           minimum_completion_percent: 80

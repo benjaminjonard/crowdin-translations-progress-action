@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] / 2023-11-08
+### Miscellaneous
+-  Add title and alt on flags (benjaminjonard)
+
 ## [1.0.6] / 2023-11-08
 ### Miscellaneous
 -  Order languages by progress then alphabetically (benjaminjonard)
