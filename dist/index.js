@@ -125,7 +125,7 @@ function generateTableSection(languages, title) {
         if (currentIndex % languagesPerRow == 1 || currentIndex == 1) {
             markdown += '<tr>';
         }
-        markdown += `<td align="center" valign="top"><img width="30px" height="30px" src="https://raw.githubusercontent.com/benjaminjonard/crowdin-translations-progress-action/1.0/flags/${language.languageId}.png"></div><div align="center" valign="top">${language.translationProgress}%</td>`;
+        markdown += `<td align="center" valign="top"><img width="30px" height="30px" title="${language.language.name}" alt="${language.language.name}" src="https://raw.githubusercontent.com/benjaminjonard/crowdin-translations-progress-action/1.0/flags/${language.languageId}.png"></div><div align="center" valign="top">${language.translationProgress}%</td>`;
         if (currentIndex % languagesPerRow == 0) {
             markdown += '</tr>';
         }
