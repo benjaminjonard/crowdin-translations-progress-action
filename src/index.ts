@@ -54,6 +54,8 @@ function getLanguagesProgress() {
             
             	if (a.language.name > b.language.name) return 1;
             	if (a.language.name < b.language.name) return -1;
+                
+                return 0;
             });
 
 
