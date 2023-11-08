@@ -48,7 +48,14 @@ function getLanguagesProgress() {
                 languages.push(language.data);
             })
 
-            languages.sort((a, b) => (a.translationProgress < b.translationProgress) ? 1 : -1)
+            languages.sort(function (a, b) {
+            	if (a.translationProgress > b.translationProgress) return -1;
+            	if (a.translationProgress < b.translationProgress) return 1;
+            
+            	if (a.language.name > b.language.name) return 1;
+            	if (a.language.name < b.language.name) return -1;
+            });
+
 
             return languages;
         })
